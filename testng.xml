@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Default Suite" verbose="2" >
+
+    <test name="Test Suite" thread-count="5" parallel="methods">
+<!--        <parameter name="browser" value="CHROME"/>-->
+        <packages>
+            <package name="org.example.oauth.tests" />
+        </packages>
+    </test>
+</suite>
