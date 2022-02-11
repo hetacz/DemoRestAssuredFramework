@@ -2,7 +2,7 @@
 
 <suite name="Default Suite" verbose="2" >
 
-    <test name="Test Suite" thread-count="1" parallel="none">
+    <test name="Test Suite" thread-count="5" parallel="methods">
 <!--        <parameter name="browser" value="CHROME"/>-->
         <packages>
             <package name="org.example.oauth.tests" />

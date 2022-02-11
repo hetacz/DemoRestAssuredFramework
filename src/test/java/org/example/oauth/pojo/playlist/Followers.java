@@ -2,7 +2,15 @@ package org.example.oauth.pojo.playlist;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.jackson.Jacksonized;
 
+@Getter
+@Setter
+@Jacksonized
+@Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Followers {
 
@@ -10,35 +18,4 @@ public class Followers {
     private Object href;
     @JsonProperty("total")
     private Integer total;
-
-    @JsonProperty("href")
-    public Object getHref() {
-        return href;
-    }
-
-    @JsonProperty("href")
-    public void setHref(Object href) {
-        this.href = href;
-    }
-
-    public Followers withHref(Object href) {
-        this.href = href;
-        return this;
-    }
-
-    @JsonProperty("total")
-    public Integer getTotal() {
-        return total;
-    }
-
-    @JsonProperty("total")
-    public void setTotal(Integer total) {
-        this.total = total;
-    }
-
-    public Followers withTotal(Integer total) {
-        this.total = total;
-        return this;
-    }
-
 }

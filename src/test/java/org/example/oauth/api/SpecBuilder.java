@@ -6,13 +6,14 @@ import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
+import org.example.oauth.constants.Route;
 
 public class SpecBuilder {
 
     public static RequestSpecification getRequestSpec() {
         return new RequestSpecBuilder()
                 .setBaseUri("https://api.spotify.com")
-                .setBasePath("/v1")
+                .setBasePath(Route.BASE_PATH.getUrl())
                 .setContentType(ContentType.JSON)
                 .log(LogDetail.ALL)
                 .build();

@@ -2,6 +2,7 @@ package org.example.oauth.api;
 
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import org.example.oauth.constants.Route;
 
 import java.util.HashMap;
 
@@ -12,7 +13,8 @@ public class MethodBuilder {
 
     public static Response get(String path, String token) {
         return given(getRequestSpec())
-                .header("Authorization", "Bearer " + token)
+                .auth()
+                .oauth2(token)
                 .when()
                 .get(path)
                 .then()
@@ -23,7 +25,8 @@ public class MethodBuilder {
 
     public static Response post(String path, String token, Object request) {
         return given(getRequestSpec())
-                .header("Authorization", "Bearer " + token)
+                .auth()
+                .oauth2(token)
                 .body(request)
                 .when()
                 .post(path)
@@ -35,7 +38,8 @@ public class MethodBuilder {
 
     public static Response put(String path, String token, Object request) {
         return given(getRequestSpec())
-                .header("Authorization", "Bearer " + token)
+                .auth()
+                .oauth2(token)
                 .body(request)
                 .when()
                 .put(path)
@@ -50,7 +54,7 @@ public class MethodBuilder {
                 .contentType(ContentType.URLENC)
                 .formParams(formParams)
                 .when()
-                .post("/api/token")
+                .post(Route.API.getUrl() + Route.TOKEN.getUrl())
                 .then()
                 .spec(getResponseSpec())
                 .extract()
